@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Finds Shop</title>
 
+<style>
+body { font-family: Arial; margin:0; background:#f4f4f4; }
+header { background:black; color:white; text-align:center; padding:15px; }
+
+.container { padding:15px; }
+
+.products { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+
+.card { background:white; padding:10px; border-radius:10px; }
+.card img { width:100%; border-radius:10px; }
+
+button { width:100%; padding:10px; margin-top:5px; border:none; cursor:pointer; }
+
+.add { background:black; color:white; }
+
+.cart { background:white; padding:15px; margin-top:20px; border-radius:10px; }
+
+.checkout { background:white; padding:15px; margin-top:20px; border-radius:10px; }
+
+input, select { width:100%; padding:10px; margin:5px 0; }
+
+.whatsapp {
+display:block;
+text-align:center;
+background:#25D366;
+color:white;
+padding:10px;
+text-decoration:none;
+margin-top:10px;
+border-radius:8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>✨ Daily Finds</h1>
+<p>Home Decor & Lifestyle</p>
+</header>
+
+<div class="container">
+
+<h2>🛍 Products</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Decor Item 1</h3>
+<p>Rs 1200</p>
+<button class="add" onclick="add('Decor Item 1',1200)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Decor Item 2</h3>
+<p>Rs 1500</p>
+<button class="add" onclick="add('Decor Item 2',1500)">Add</button>
+</div>
+
+</div>
+
+<!-- CART -->
+<div class="cart">
+<h2>🛒 Cart</h2>
+<ul id="list"></ul>
+<h3>Total: Rs <span id="total">0</span></h3>
+</div>
+
+<!-- CHECKOUT -->
+<div class="checkout">
+<h2>📦 Checkout</h2>
+
+<form onsubmit="order(event)">
+<input type="text" placeholder="Name" required>
+<input type="text" placeholder="Phone" required>
+<input type="text" placeholder="Address" required>
+
+<select required>
+<option value="">Payment Method</option>
+<option>Cash on Delivery</option>
+<option>JazzCash (Manual)</option>
+<option>EasyPaisa (Manual)</option>
+</select>
+
+<button type="submit">Place Order</button>
+</form>
+
+<a class="whatsapp" href="https://wa.me/923000000000">
+💬 WhatsApp Order
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+let cart = [];
+let total = 0;
+
+function add(name, price){
+cart.push(name + " - Rs " + price);
+total += price;
+render();
+}
+
+function render(){
+document.getElementById("list").innerHTML =
+cart.map(i => "<li>" + i + "</li>").join("");
+
+document.getElementById("total").innerText = total;
+}
+
+function order(e){
+e.preventDefault();
+alert("Order received! Hum contact karenge 😊");
+cart = [];
+total = 0;
+render();
+}
+
+</script>
+
+</body>
+</html>
