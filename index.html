@@ -1,135 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Finds Shop</title>
+<title>Daily Finds PK</title>
 
 <style>
-body { font-family: Arial; margin:0; background:#f4f4f4; }
-header { background:black; color:white; text-align:center; padding:15px; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-.container { padding:15px; }
+body{
+background:#f8f4ef;
+color:#333;
+}
 
-.products { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
-
-.card { background:white; padding:10px; border-radius:10px; }
-.card img { width:100%; border-radius:10px; }
-
-button { width:100%; padding:10px; margin-top:5px; border:none; cursor:pointer; }
-
-.add { background:black; color:white; }
-
-.cart { background:white; padding:15px; margin-top:20px; border-radius:10px; }
-
-.checkout { background:white; padding:15px; margin-top:20px; border-radius:10px; }
-
-input, select { width:100%; padding:10px; margin:5px 0; }
-
-.whatsapp {
-display:block;
+header{
+background:white;
+padding:20px;
 text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+width:140px;
+}
+
+.hero{
+padding:40px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:40px;
+color:#6f4e37;
+}
+
+.hero p{
+margin-top:10px;
+font-size:18px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+padding:30px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.card h2{
+margin-bottom:10px;
+}
+
+.old{
+text-decoration:line-through;
+color:red;
+font-size:18px;
+}
+
+.new{
+font-size:28px;
+font-weight:bold;
+color:#6f4e37;
+}
+
+.btn{
+display:block;
+width:100%;
+padding:12px;
+background:#6f4e37;
+color:white;
+text-decoration:none;
+text-align:center;
+border-radius:8px;
+margin-top:10px;
+}
+
+.features{
+background:white;
+padding:30px;
+text-align:center;
+margin-top:20px;
+}
+
+.features h2{
+margin-bottom:20px;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
 background:#25D366;
 color:white;
-padding:10px;
+padding:15px 20px;
+border-radius:50px;
 text-decoration:none;
-margin-top:10px;
-border-radius:8px;
+font-weight:bold;
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-<h1>✨ Daily Finds</h1>
-<p>Home Decor & Lifestyle</p>
+<img src="logo.png" class="logo">
 </header>
 
-<div class="container">
+<section class="hero">
+<h1>Daily Finds PK</h1>
+<p>Premium Home Decor & Lifestyle Products</p>
+<p>🚚 Free Shipping All Over Pakistan</p>
+</section>
 
-<h2>🛍 Products</h2>
-
-<div class="products">
-
-<div class="card">
-<img src="https://via.placeholder.com/200">
-<h3>Decor Item 1</h3>
-<p>Rs 1200</p>
-<button class="add" onclick="add('Decor Item 1',1200)">Add</button>
-</div>
+<section class="products">
 
 <div class="card">
-<img src="https://via.placeholder.com/200">
-<h3>Decor Item 2</h3>
-<p>Rs 1500</p>
-<button class="add" onclick="add('Decor Item 2',1500)">Add</button>
+<img src="storage-box.png">
+<div class="card-content">
+<h2>Premium Storage Box</h2>
+<p class="old">Rs. 999</p>
+<p class="new">Rs. 699</p>
+<a class="btn" href="https://wa.me/923483111632">Order on WhatsApp</a>
+</div>
 </div>
 
+<div class="card">
+<img src="bunny-bottle.png">
+<div class="card-content">
+<h2>Hulu Hulu Bottle</h2>
+<p class="old">Rs. 999</p>
+<p class="new">Rs. 799</p>
+<a class="btn" href="https://wa.me/923483111632">Order on WhatsApp</a>
+</div>
 </div>
 
-<!-- CART -->
-<div class="cart">
-<h2>🛒 Cart</h2>
-<ul id="list"></ul>
-<h3>Total: Rs <span id="total">0</span></h3>
+<div class="card">
+<img src="amber-glass.png">
+<div class="card-content">
+<h2>Amber Glass Tumbler</h2>
+<p class="old">Rs. 999</p>
+<p class="new">Rs. 699</p>
+<a class="btn" href="https://wa.me/923483111632">Order on WhatsApp</a>
+</div>
 </div>
 
-<!-- CHECKOUT -->
-<div class="checkout">
-<h2>📦 Checkout</h2>
+</section>
 
-<form onsubmit="order(event)">
-<input type="text" placeholder="Name" required>
-<input type="text" placeholder="Phone" required>
-<input type="text" placeholder="Address" required>
+<section class="features">
+<h2>Why Shop With Us?</h2>
+<p>✅ Free Shipping All Over Pakistan</p>
+<p>✅ Cash On Delivery</p>
+<p>✅ Premium Quality Products</p>
+<p>✅ Fast Delivery</p>
+</section>
 
-<select required>
-<option value="">Payment Method</option>
-<option>Cash on Delivery</option>
-<option>JazzCash (Manual)</option>
-<option>EasyPaisa (Manual)</option>
-</select>
+<footer>
+<p>Instagram: @dailyfindspk</p>
+<p>WhatsApp: 0348-3111632</p>
+<p>© Daily Finds PK</p>
+</footer>
 
-<button type="submit">Place Order</button>
-</form>
-
-<a class="whatsapp" href="https://wa.me/923000000000">
-💬 WhatsApp Order
+<a class="whatsapp" href="https://wa.me/923483111632">
+WhatsApp Order
 </a>
-
-</div>
-
-</div>
-
-<script>
-
-let cart = [];
-let total = 0;
-
-function add(name, price){
-cart.push(name + " - Rs " + price);
-total += price;
-render();
-}
-
-function render(){
-document.getElementById("list").innerHTML =
-cart.map(i => "<li>" + i + "</li>").join("");
-
-document.getElementById("total").innerText = total;
-}
-
-function order(e){
-e.preventDefault();
-alert("Order received! Hum contact karenge 😊");
-cart = [];
-total = 0;
-render();
-}
-
-</script>
 
 </body>
 </html>
