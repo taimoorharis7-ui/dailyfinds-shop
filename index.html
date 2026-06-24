@@ -90,8 +90,8 @@ width:100%;
 padding:12px;
 background:#6f4e37;
 color:white;
-text-decoration:none;
-text-align:center;
+border:none;
+cursor:pointer;
 border-radius:8px;
 margin-top:10px;
 }
@@ -101,10 +101,6 @@ background:white;
 padding:30px;
 text-align:center;
 margin-top:20px;
-}
-
-.features h2{
-margin-bottom:20px;
 }
 
 footer{
@@ -125,6 +121,29 @@ padding:15px 20px;
 border-radius:50px;
 text-decoration:none;
 font-weight:bold;
+}
+
+.order-box{
+border:1px solid #ddd;
+padding:15px;
+margin:30px;
+background:white;
+border-radius:10px;
+}
+
+.order-box input{
+width:100%;
+padding:10px;
+margin:5px 0;
+}
+
+.order-btn{
+width:100%;
+padding:12px;
+background:black;
+color:white;
+border:none;
+cursor:pointer;
 }
 </style>
 </head>
@@ -149,7 +168,7 @@ font-weight:bold;
 <h2>Premium Storage Box</h2>
 <p class="old">Rs. 999</p>
 <p class="new">Rs. 699</p>
-<a class="btn" href="https://wa.me/923483111632">Order on WhatsApp</a>
+<button class="btn" onclick="openOrder('Premium Storage Box')">Buy Now</button>
 </div>
 </div>
 
@@ -159,7 +178,7 @@ font-weight:bold;
 <h2>Hulu Hulu Bottle</h2>
 <p class="old">Rs. 999</p>
 <p class="new">Rs. 799</p>
-<a class="btn" href="https://wa.me/923483111632">Order on WhatsApp</a>
+<button class="btn" onclick="openOrder('Hulu Hulu Bottle')">Buy Now</button>
 </div>
 </div>
 
@@ -169,11 +188,21 @@ font-weight:bold;
 <h2>Amber Glass Tumbler</h2>
 <p class="old">Rs. 999</p>
 <p class="new">Rs. 699</p>
-<a class="btn" href="https://wa.me/923483111632">Order on WhatsApp</a>
+<button class="btn" onclick="openOrder('Amber Glass Tumbler')">Buy Now</button>
 </div>
 </div>
 
 </section>
+
+<div class="order-box" id="orderBox" style="display:none;">
+<h3>Place Your Order</h3>
+
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<input id="address" placeholder="Address">
+
+<button class="order-btn" onclick="sendOrder()">Order on WhatsApp</button>
+</div>
 
 <section class="features">
 <h2>Why Shop With Us?</h2>
@@ -192,6 +221,36 @@ font-weight:bold;
 <a class="whatsapp" href="https://wa.me/923483111632">
 WhatsApp Order
 </a>
+
+<script>
+let selectedProduct = "";
+
+function openOrder(product){
+selectedProduct = product;
+document.getElementById("orderBox").style.display = "block";
+window.scrollTo(0, document.body.scrollHeight);
+}
+
+function sendOrder(){
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let address = document.getElementById("address").value;
+
+let message =
+`🛒 New Order - Daily Finds
+
+Product: ${selectedProduct}
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Please confirm order.`;
+
+let url = "https://wa.me/923483111632?text=" + encodeURIComponent(message);
+
+window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
